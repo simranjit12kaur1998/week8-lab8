@@ -1,0 +1,47 @@
+<!-- updatecontact.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Update Contact</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <!-- Link to external stylesheet -->
+</head>
+<body>
+  <nav class="navbar">
+    <h1>My Contacts</h1>
+    <div class="links">
+      <a href="/">Home</a>
+      <a class="new-item-link" href="/addcontact">New Contact</a>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div class="update">
+      <h2>Update Contact</h2>
+      <form action="/single-contact/<%= contact._id %>?_method=PUT" method="POST">
+        <label>Title:</label>
+        <input type="text" value="<%= contact.title %>" id="title" name="title" required />
+
+        <label for="address"><address></Address>:</label>
+        <textarea id="address" name="address" rows="4" required><%= contact.description %></textarea>
+
+        <label for="phone">phone:</label>
+        <input type="phone" id="phone" name="phone" required value="<%= contact.targetDate.toISOString().substr(0, 10) %>" />
+
+        <label>Author:</label>
+        <select name="author">
+          <option value="simran">Simran</option>
+          <option value="sam">Sam</option>
+        </select>
+
+        <label for="achieved">Achieved:</label>
+        <input type="checkbox" id="achieved" name="achieved" <% if (contact.achieved) { %>checked<% } %> />
+
+        <button type="submit">Update Contact</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
